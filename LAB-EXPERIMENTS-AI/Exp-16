@@ -1,0 +1,38 @@
+import math
+
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+
+# Input values
+inputs = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+]
+
+# Weights and bias
+w1 = 0.5
+w2 = 0.5
+bias = -0.2
+
+print("Feed Forward Neural Network")
+print("---------------------------")
+
+for x in inputs:
+    # Weighted sum
+    z = x[0] * w1 + x[1] * w2 + bias
+
+    # Activation function
+    output = sigmoid(z)
+
+    # Class
+    if output >= 0.5:
+        result = 1
+    else:
+        result = 0
+
+    print("Input:", x)
+    print("Output:", result)
+    print()
