@@ -1,0 +1,23 @@
+student(ravi, ai).
+student(anu, ds).
+student(kumar, ai).
+
+teacher(raja, ai).
+teacher(priya, ds).
+
+subject(ai, 'AI101').
+subject(ds, 'DS102').
+
+:- initialization(main).
+
+main :-
+    student(ravi, Subject),
+    subject(Subject, Code),
+    write('Student: ravi'),
+    nl,
+    write('Subject: '),
+    write(Subject),
+    nl,
+    write('Subject Code: '),
+    write(Code),
+    nl.
