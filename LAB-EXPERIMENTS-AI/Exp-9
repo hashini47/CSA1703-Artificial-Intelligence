@@ -1,0 +1,49 @@
+import heapq
+
+graph = {
+    'A': [('B', 1), ('C', 4)],
+    'B': [('D', 2), ('E', 5)],
+    'C': [('E', 1)],
+    'D': [('G', 3)],
+    'E': [('G', 2)],
+    'G': []
+}
+
+heuristic = {
+    'A': 6,
+    'B': 4,
+    'C': 3,
+    'D': 2,
+    'E': 1,
+    'G': 0
+}
+
+def a_star(start, goal):
+    queue = [(heuristic[start], 0, start, [start])]
+    visited = set()
+
+    while queue:
+        f, g, node, path = heapq.heappop(queue)
+
+        if node == goal:
+            return path, g
+
+        if node in visited:
+            continue
+
+        visited.add(node)
+
+        for neighbor, cost in graph[node]:
+            new_g = g + cost
+            new_f = new_g + heuristic[neighbor]
+
+            heapq.heappush(
+                queue,
+                (new_f, new_g, neighbor, path + [neighbor])
+            )
+
+
+path, cost = a_star('A', 'G')
+
+print("Path:", path)
+print("Cost:", cost)
