@@ -1,0 +1,46 @@
+import math
+
+# Sigmoid activation function
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+
+# Input data: [Input1, Input2]
+X = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+]
+
+# Expected output
+Y = [0, 1, 1, 0]
+
+
+# Weights and biases
+w1 = 0.5
+w2 = 0.5
+bias = -0.2
+
+
+print("Feed Forward Neural Network")
+print("----------------------------")
+
+for i in range(len(X)):
+
+    # Input layer -> Output layer
+    weighted_sum = (X[i][0] * w1) + (X[i][1] * w2) + bias
+
+    # Activation
+    output = sigmoid(weighted_sum)
+
+    # Classification
+    if output >= 0.5:
+        prediction = 1
+    else:
+        prediction = 0
+
+    print("Input:", X[i])
+    print("Predicted Output:", prediction)
+    print()
+    
