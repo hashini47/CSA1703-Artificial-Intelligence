@@ -1,46 +1,42 @@
-import math
+# Decision Tree Implementation
 
-# Sigmoid activation function
-def sigmoid(x):
-    return 1 / (1 + math.exp(-x))
-
-
-# Input data: [Input1, Input2]
-X = [
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1]
+# Training data
+data = [
+    [25, "Yes", "No"],
+    [30, "Yes", "No"],
+    [35, "No", "Yes"],
+    [40, "No", "Yes"],
+    [45, "No", "Yes"],
+    [50, "Yes", "No"]
 ]
 
-# Expected output
-Y = [0, 1, 1, 0]
-
-
-# Weights and biases
-w1 = 0.5
-w2 = 0.5
-bias = -0.2
-
-
-print("Feed Forward Neural Network")
-print("----------------------------")
-
-for i in range(len(X)):
-
-    # Input layer -> Output layer
-    weighted_sum = (X[i][0] * w1) + (X[i][1] * w2) + bias
-
-    # Activation
-    output = sigmoid(weighted_sum)
-
-    # Classification
-    if output >= 0.5:
-        prediction = 1
+# Simple decision tree
+def decision_tree(age, income_high):
+    if age <= 32:
+        return "Buy"
     else:
-        prediction = 0
+        if income_high == "Yes":
+            return "Buy"
+            
+        else:
+            return "Don't Buy"
 
-    print("Input:", X[i])
-    print("Predicted Output:", prediction)
+
+print("DECISION TREE")
+print("-------------")
+
+# Test cases
+test_data = [
+    [28, "Yes"],
+    [35, "No"],
+    [45, "No"],
+    [50, "Yes"]
+]
+
+for age, income in test_data:
+    result = decision_tree(age, income)
+
+    print("Age:", age)
+    print("Income High:", income)
+    print("Prediction:", result)
     print()
-    
