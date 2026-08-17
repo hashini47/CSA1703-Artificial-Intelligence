@@ -1,4 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
 
 # Training data
 X = [
@@ -13,35 +14,24 @@ X = [
 # 1 = Buy, 0 = Don't Buy
 y = [1, 1, 1, 0, 0, 0]
 
-# Create Decision Tree
 model = DecisionTreeClassifier(criterion="entropy")
-
-# Train the model
 model.fit(X, y)
 
-# Test data
-test_data = [
-    [32, 1],
-    [42, 0],
-    [28, 1],
-    [48, 0]
-]
+# Prediction
+age = 32
+income_high = 1
 
-# Predict
-predictions = model.predict(test_data)
+prediction = model.predict([[age, income_high]])
 
-print("Decision Tree Predictions:")
-print("--------------------------")
+if prediction[0] == 1:
+    print("Prediction: Buy")
+else:
+    print("Prediction: Don't Buy")
 
-for i in range(len(test_data)):
-    if predictions[i] == 1:
-        result = "Buy"
-    else:
-        result = "Don't Buy"
-
-    print(
-        "Age =", test_data[i][0],
-        ", Income High =", test_data[i][1],
-        "=>", result
-    )
-    
+# Display tree
+tree.plot_tree(
+    model,
+    feature_names=["Age", "Income High"],
+    class_names=["Don't Buy", "Buy"],
+    filled=True
+)
