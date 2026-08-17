@@ -1,0 +1,18 @@
+planet(mercury, small).
+planet(venus, small).
+planet(earth, medium).
+planet(mars, small).
+planet(jupiter, large).
+planet(saturn, large).
+planet(uranus, large).
+planet(neptune, large).
+
+:- initialization(main).
+
+main :-
+    planet(earth, Size),
+    write('Planet: earth'),
+    nl,
+    write('Size: '),
+    write(Size),
+    nl.
