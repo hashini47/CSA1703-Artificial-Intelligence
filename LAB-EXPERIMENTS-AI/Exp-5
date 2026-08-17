@@ -1,0 +1,40 @@
+from collections import deque
+
+def vacuum_cleaner():
+    start = ("Dirty", "Dirty", 0)
+    queue = deque([(start, [])])
+    visited = set()
+
+    while queue:
+        state, path = queue.popleft()
+
+        if state in visited:
+            continue
+
+        visited.add(state)
+        path = path + [state]
+
+        left, right, pos = state
+
+        if left == "Clean" and right == "Clean":
+            print("Solution:")
+            for s in path:
+                print(s)
+            return
+
+        if pos == 0:
+            actions = [
+                ("Clean", right, 0),
+                (left, right, 1)
+            ]
+        else:
+            actions = [
+                (left, "Clean", 1),
+                (left, right, 0)
+            ]
+
+        for new_state in actions:
+            queue.append((new_state, path))
+
+
+vacuum_cleaner()
