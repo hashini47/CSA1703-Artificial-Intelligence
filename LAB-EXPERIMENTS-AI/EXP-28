@@ -1,0 +1,14 @@
+employee(john).
+manager(john).
+works(john,sales).
+
+required(X) :-
+    employee(X),
+    manager(X),
+    works(X,sales).
+
+:- initialization(main).
+
+main :-
+    required(john),
+    write('Required conditions satisfied').
