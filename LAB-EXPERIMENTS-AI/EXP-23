@@ -1,0 +1,12 @@
+diet(diabetes, low_sugar).
+diet(obesity, low_fat).
+diet(bp, low_salt).
+
+suggest(Disease,Diet) :-
+    diet(Disease,Diet).
+
+:- initialization(main).
+
+main :-
+    suggest(diabetes,D),
+    write(D).
