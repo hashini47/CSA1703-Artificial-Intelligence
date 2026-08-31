@@ -1,0 +1,7 @@
+match(X,X).
+
+:- initialization(main).
+
+main :-
+    match(apple,apple),
+    write('Pattern matched').
