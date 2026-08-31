@@ -1,0 +1,10 @@
+can_reach(monkey,banana).
+
+get_banana :-
+    can_reach(monkey,banana).
+
+:- initialization(main).
+
+main :-
+    get_banana,
+    write('Monkey gets banana').
