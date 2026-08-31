@@ -1,0 +1,16 @@
+edge(a,b).
+edge(a,c).
+edge(b,d).
+edge(c,d).
+
+search(X,X) :-
+    write('Goal found').
+
+search(X,Y) :-
+    edge(X,Z),
+    search(Z,Y).
+
+:- initialization(main).
+
+main :-
+    search(a,d).
