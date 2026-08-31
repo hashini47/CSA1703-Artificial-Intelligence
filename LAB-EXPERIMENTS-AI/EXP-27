@@ -1,0 +1,12 @@
+symptom(fever,flu).
+symptom(cough,flu).
+symptom(rash,measles).
+
+diagnose(S,D) :-
+    symptom(S,D).
+
+:- initialization(main).
+
+main :-
+    diagnose(fever,D),
+    write(D).
