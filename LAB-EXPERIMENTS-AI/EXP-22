@@ -1,0 +1,13 @@
+parent(john, mary).
+parent(john, sam).
+parent(mary, tom).
+
+grandparent(X,Z) :-
+    parent(X,Y),
+    parent(Y,Z).
+
+:- initialization(main).
+
+main :-
+    grandparent(john, tom),
+    write('John is grandparent of Tom').
